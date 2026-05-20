@@ -1,26 +1,46 @@
-async function sendMessage() {
+async function generateImage(){
 
-  const prompt = document.getElementById("prompt").value;
+const prompt =
+document.getElementById("prompt").value;
 
-  const responseBox = document.getElementById("response");
+const status =
+document.getElementById("status");
 
-  responseBox.innerHTML = "Cargando...";
+const image =
+document.getElementById("image");
 
-  try {
+if(!prompt){
+status.innerHTML = "Escribe un prompt";
+return;
+}
 
-    const res = await fetch(
-      `/api/chat?text=${encodeURIComponent(prompt)}`
-    );
+status.innerHTML = "Generando imagen...";
 
-    const data = await res.json();
+image.src = "";
 
-    responseBox.innerHTML = data.response;
+try{
 
-  } catch(err) {
+const result = await textToImage({
 
-    responseBox.innerHTML = "Error conectando API";
+prompt: prompt,
 
-    console.error(err);
+width: 1024,
+height: 1024,
 
-  }
+seed: Date.now()
+
+});
+
+image.src = result.image;
+
+status.innerHTML = "Imagen generada";
+
+}catch(err){
+
+console.error(err);
+
+status.innerHTML = "Error generando imagen";
+
+}
+
 }
