@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Juanko AI XP</title>
 
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Juanko AI XP</title>
+
+<link rel="stylesheet" href="styles.css">
+
+<script src="https://perchance.org/text-to-image-plugin.js"></script>
+
 </head>
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <h1>Juanko AI XP</h1>
+<h1>Juanko AI XP</h1>
 
-    <p class="subtitle">
-      Vercel + GitHub + ArceusX
-    </p>
+<p class="subtitle">
+Perchance + Vercel + ArceusX
+</p>
 
-    <input
-      type="text"
-      id="prompt"
-      placeholder="Escribe algo..."
-    >
+<input
+type="text"
+id="prompt"
+placeholder="Escribe prompt..."
+>
 
-    <button onclick="sendMessage()">
-      Enviar
-    </button>
+<button onclick="generateImage()">
+Generar Imagen
+</button>
 
-    <div id="response">
-      Esperando respuesta...
-    </div>
+<div class="status" id="status">
+Esperando...
+</div>
 
-  </div>
+<img id="image">
 
-  <script src="script.js"></script>
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
