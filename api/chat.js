@@ -1,10 +1,13 @@
-export default function handler(req, res) {
+export default async function handler(req, res) {
 
-  const text = req.query.text || "Hola";
+  const prompt = req.query.prompt || "anime girl";
+
+  const image =
+  `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}`;
 
   res.status(200).json({
     success: true,
-    response: "Webhook : " + text
+    image: image
   });
 
 }
