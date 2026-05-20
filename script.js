@@ -1,3 +1,5 @@
+let lastImage = "";
+
 async function generateImage(){
 
 const prompt =
@@ -10,7 +12,7 @@ const image =
 document.getElementById("image");
 
 if(!prompt){
-status.innerHTML = "Escribe un prompt";
+status.innerHTML = "Escribe prompt";
 return;
 }
 
@@ -33,14 +35,20 @@ seed: Date.now()
 
 image.src = result.image;
 
+lastImage = result.image;
+
 status.innerHTML = "Imagen generada";
 
 }catch(err){
 
 console.error(err);
 
-status.innerHTML = "Error generando imagen";
+status.innerHTML = "Error";
 
 }
 
+}
+
+window.getLastImage = function(){
+return lastImage;
 }
