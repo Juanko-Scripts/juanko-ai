@@ -1,17 +1,20 @@
+let latestImage = "";
+
 export default async function handler(req, res) {
 
-const prompt =
-req.query.prompt || "anime girl";
+if(req.method === "POST") {
 
-const seed =
-req.query.seed || Date.now();
+latestImage = req.body.image || "";
 
-const image =
-`https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=1024&height=1024&seed=${seed}`;
+return res.status(200).json({
+success:true
+});
+
+}
 
 res.status(200).json({
 success:true,
-image:image
+image:latestImage
 });
 
 }
